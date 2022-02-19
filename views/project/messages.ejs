@@ -1,0 +1,32 @@
+<div id="messages">
+  <div class="container">
+      <h1>Chat Transcripts</h1>
+      <hr/>
+      <p>All messages:</p>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Channel</th>
+            <th scope="col">Name</th>
+            <th scope="col">Message</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% _.each(chats, function (chat) { %>
+            <% _.each(chat.messages, function (message) { %>
+                <tr>
+                  <td><%= chat.id %></td>
+                  <td><%= message.name %></td>
+                  <td><%= message.text %></td>
+                </tr>
+            <% }) %>
+        <% }) %>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+
+
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

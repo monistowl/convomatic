@@ -1,0 +1,57 @@
+<div id="homepage" :class="[heroHeightSet ? '' : 'uninitialized']" v-cloak>
+  <div class="hero d-flex flex-column justify-content-center" full-page-hero>
+    <div class="container text-center">
+        <h1 class="display-4">Convomatic.</h1>
+
+      <div class="hero-image">
+        <img class="sky" alt="The sky above the ocean" src="/images/hero-sky.png"/>
+        <img class="cloud cloud-1" alt="A grayish-blue cloud" src="/images/hero-cloud.png"/>
+        <img class="cloud cloud-2" alt="Another grayish-blue cloud" src="/images/hero-cloud.png"/>
+        <img class="ship" alt="A ship hovering a few feet over the surface of the water, bearing a flagpole with the Sails.js logo" src="/images/hero-ship.png"/>
+        <img class="water" alt="The shadow of the floating ship on the water" src="/images/hero-water.png"/>
+      </div>
+      <h1 class="display-4">Live chat for social scientists.</h1>
+      <div>
+        <div class="more-info-text" @click="clickHeroButton()">
+          <div class="text">Dive in</div>
+          <div class="icon">&darr;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-wrapper" role="scroll-destination">
+    <div class="container">
+      <div class="about text-center">
+        <h3>This is alpha-stage software.</h3>
+        <p>Parts of our site are still under construction -- no warranty express or implied. Use entirely at your own risk. If you run into an error, <a href="/contact">let us know</a>.</p>
+      </div>
+      <div class="features text-center">
+        <div class="row">
+          <div class="feature col-sm">
+            <div class="icon">
+              <i class="fa fa-comments"></i>
+            </div>
+            <h4>Seamless Custom Chat</h4>
+            <p class="text-muted">Instantly connect thousands of users from across the world in prompted, logged conversations.</p>
+          </div>
+          <div class="col-sm feature">
+            <div class="icon">
+              <i class="fa fa-plug"></i>
+            </div>
+            <h4>Survey Integration</h4>
+            <p class="text-muted">Convomatic works with Qualtrics and Amazon Mechanical Turk to let you spin up chatrooms among survey participants.</p>
+          </div>
+          <div class="col-sm feature">
+            <div class="icon">
+              <i class="fa fa-credit-card"></i>
+            </div>
+            <h4>Unbeatable Prices</h4>
+            <p class="text-muted">Our competitors are outrageously expensive -- we're not. $0 a month buys you unlimited surveys, at scale.</p>
+          </div>
+        </div>
+        <a class="btn btn-outline-info mt-5" href="/faq">Learn more</a>
+      </div>
+    </div>
+  </div>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
