@@ -261,12 +261,12 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    onlyAllowOrigins: [
-      'https://convomatic.herokuapp.com',
-      //'http://convomatic.herokuapp.com',
-      // 'http://localhost:1337',
-      // 'http://localhost:1337',
-    ],
+    // onlyAllowOrigins: [
+    //   'https://convomatic.herokuapp.com',
+    //   //'http://convomatic.herokuapp.com',
+    //   // 'http://localhost:1337',
+    //   // 'http://localhost:1337',
+    // ],
 
 
     /***************************************************************************
@@ -281,6 +281,8 @@ module.exports = {
     * (https://sailsjs.com/docs/concepts/deployment/scaling)                   *
     *                                                                          *
     ***************************************************************************/
+     adapter: '@sailshq/connect-redis',
+     url: process.env.REDIS_URL,
     // adapter: '@sailshq/socket.io-redis',
     // url: 'redis://user:password@bigsquid.redistogo.com:9562/databasenumber',
     //--------------------------------------------------------------------------
