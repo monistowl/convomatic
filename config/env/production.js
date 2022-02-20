@@ -283,8 +283,12 @@ module.exports = {
     * (https://sailsjs.com/docs/concepts/deployment/scaling)                   *
     *                                                                          *
     ***************************************************************************/
-     adapter: '@sailshq/connect-redis',
-     url: process.env.REDIS_URL,
+    
+    
+    //  adapter: '@sailshq/connect-redis',
+    //  url: process.env.REDIS_URL,
+
+
     // adapter: '@sailshq/socket.io-redis',
     // url: 'redis://user:password@bigsquid.redistogo.com:9562/databasenumber',
     //--------------------------------------------------------------------------
