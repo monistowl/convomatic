@@ -384,7 +384,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: ''https://convomatic.herokuapp.com'',
+    baseUrl: 'https://convomatic.herokuapp.com',
     internalEmailAddress: 'support@convomatic.herokuapp.com',
 
     // sendgridSecret: 'SG.fake.3e0Bn0qSQVnwb1E4qNPz9JZP5vLZYqjh7sn8S93oSHU',
