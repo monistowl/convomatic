@@ -50,7 +50,10 @@ module.exports = {
 
       adapter: 'sails-postgresql',
       url: process.env.DATABASE_URL,
-      ssl: true,
+      ssl: {
+        sslmode: 'require',
+        rejectUnauthorized: false,
+      },
 
 
       // adapter: 'sails-mysql',
