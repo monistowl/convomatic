@@ -91,7 +91,7 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
     // ||  (or use system environment variables prefixed with "sails_custom__")
     //--------------------------------------------------------------------------
 
-  })
+  }),
 
   models: Object.assign({}, PRODUCTION_CONFIG.models, {
 
