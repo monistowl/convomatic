@@ -261,12 +261,13 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://convomatic.herokuapp.com',
-    //   //'http://convomatic.herokuapp.com',
-    //   // 'http://localhost:1337',
-    //   // 'http://localhost:1337',
-    // ],
+    onlyAllowOrigins: [
+      'https://convomatic.herokuapp.com',
+      'http://convomatic.herokuapp.com',
+      //'http://convomatic.herokuapp.com',
+      // 'http://localhost:1337',
+      // 'http://localhost:1337',
+    ],
 
 
     /***************************************************************************
