@@ -264,7 +264,7 @@ module.exports = {
     onlyAllowOrigins: [
       'https://convomatic.herokuapp.com',
       'http://convomatic.herokuapp.com',
-      '*',
+      //'*',
       //'http://convomatic.herokuapp.com',
       // 'http://localhost:1337',
       // 'http://localhost:1337',
