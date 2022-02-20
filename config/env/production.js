@@ -47,6 +47,12 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
+
+      adapter: 'sails-postgresql',
+      url: process.env.DATABASE_URL,
+      ssl: true,
+
+
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
@@ -71,7 +77,7 @@ module.exports = {
       *                                                                           *
       ****************************************************************************/
       // ssl: true,
-
+      
     },
 
   },
@@ -168,6 +174,8 @@ module.exports = {
   *                                                                          *
   ***************************************************************************/
   session: {
+    adapter: '@sailshq/connect-redis',
+    url: process.env.REDIS_URL,
 
     /***************************************************************************
     *                                                                          *
@@ -221,7 +229,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cookie: {
-      // secure: true,
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000,  // 24 hours
     },
 
@@ -250,10 +258,12 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: [
+      'https://convomatic.herokuapp.com',
+      //'http://convomatic.herokuapp.com',
+      // 'http://localhost:1337',
+      // 'http://localhost:1337',
+    ],
 
 
     /***************************************************************************
@@ -325,7 +335,7 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
-    // trustProxy: true,
+    trustProxy: true,
 
   },
 
@@ -374,8 +384,8 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://example.com',
-    internalEmailAddress: 'support@example.com',
+    baseUrl: ''https://convomatic.herokuapp.com'',
+    internalEmailAddress: 'support@convomatic.herokuapp.com',
 
     // sendgridSecret: 'SG.fake.3e0Bn0qSQVnwb1E4qNPz9JZP5vLZYqjh7sn8S93oSHU',
     // stripeSecret: 'sk_prod__fake_Nfgh82401348jaDa3lkZ0d9Hm',
