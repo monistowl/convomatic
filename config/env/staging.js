@@ -93,4 +93,10 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
 
   })
 
+  models: Object.assign({}, PRODUCTION_CONFIG.models, {
+
+    migrate: 'alter',
+
+  })
+
 });
