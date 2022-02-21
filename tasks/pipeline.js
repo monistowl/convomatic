@@ -80,15 +80,15 @@ var jsFilesToInject = [
   'js/components/**/*.js',
   'js/utilities/**/*.js',
 
-  //Ignore page-specific scripts (should use parasails instead, but honestly fuck parasails)
-  '!js/local/*.js'
+
 
   // All of the rest of your custom client-side js files will be injected here,
   // in no particular order.  To customize the ordering, add additional items
   // here, _above_ this one.
   'js/**/*.js',
 
-
+  //Ignore page-specific scripts (should use parasails instead, but honestly fuck parasails)
+  '!js/local/*.js'
 
 ];
 
