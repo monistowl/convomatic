@@ -48,12 +48,12 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    adapter: 'sails-postgresql',
-    url: 'postgres://lautmiaezuwgiz:f8217e5f74e4919748a774645010780b41c2949ceceeb6d8391f0f608ab0f1bc@ec2-18-215-8-186.compute-1.amazonaws.com:5432/dcnq1fcvpkgip5',
-    ssl: {
-      sslmode: 'require',
-      rejectUnauthorized: false,
-    },
+    // adapter: 'sails-postgresql',
+    // url: 'postgres://lautmiaezuwgiz:f8217e5f74e4919748a774645010780b41c2949ceceeb6d8391f0f608ab0f1bc@ec2-18-215-8-186.compute-1.amazonaws.com:5432/dcnq1fcvpkgip5',
+    // ssl: {
+    //   sslmode: 'require',
+    //   rejectUnauthorized: false,
+    // },
 
   },
 

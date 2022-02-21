@@ -48,6 +48,7 @@ var mychat;
 
 $(function()
 {
+    $('#chat-transcript').css("margin-bottom", $('#chat-controls').height()) + 100 && $('html, body').animate( { scrollTop: $(document).height() }, "fast" );
     // Display an incoming message
     renderMessage = function(name, text, source, imageURL) {
 
@@ -78,7 +79,7 @@ $(function()
 
       chatTranscriptEl.append(chatLineEl);
 
-      $('#chat-transcript').css("margin-bottom", $('#chat-controls').height()) && $('html, body').animate( { scrollTop: $(document).height() }, "fast" );
+      $('#chat-transcript').css("margin-bottom", $('#chat-controls').height()) + 100 && $('html, body').animate( { scrollTop: $(document).height() }, "fast" );
 
 
     };
@@ -142,14 +143,18 @@ $(function()
 </script>
 
 <div id="chat" class="container-fluid ">
-
-  <ul id="chat-transcript" class="list-group"></ul>
-
-  <div id="chat-controls" class="footer input-group row" style="position:fixed;bottom:0"/>
-      <input id="chat-input" class="form-control px-3" type="text" placeholder="Enter a message..." />
-      <span class="input-group-append">
-        <span id="chat-send-button" class="btn btn-primary btn-block">Send</span>
-      </span>
-  </div>
+    <table>
+        <tbody>
+            <ul id="chat-transcript" class="list-group"></ul>
+        </tbody>
+        <tfoot>
+            <div id="chat-controls" class="footer input-group row" style="position:fixed;bottom:0"/>
+                <input id="chat-input" class="form-control px-3" type="text" placeholder="Enter a message..." />
+                <span class="input-group-append">
+                    <span id="chat-send-button" class="btn btn-primary btn-block">Send</span>
+                </span>
+            </div>
+        </tfoot>
+    </table>
 
 </div>
