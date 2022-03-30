@@ -13,12 +13,13 @@ module.exports = {
 
     //receive message from socket, route to others in room, log if logging enabled on project
     transmit: async function(req, res) {
+        //console.log('hit transmit');
         // Get the ID of the currently connected socket
         //var socketId = sails.sockets.id(req.socket);
         var n = req.param('name');
         var t = req.param('text');
         var c = req.param('chatid');
-        var s = req.socket.id //originating socket
+        var s = req.socket.id; //originating socket
 
         //if logging
         var m = await Message.create({name: n, text: t, socket: s}).fetch();
@@ -28,6 +29,19 @@ module.exports = {
         // Send message to clients
         sails.sockets.broadcast(c, 'transmission', {name: n, text: t, socket: s});
 
+    },
+
+    //put prompts &c in chat logs
+    logservermsg: async function(req, res) {
+        console.log('hit logsvrmsg');
+        var n = req.param('name');
+        var t = req.param('text');
+        var c = req.param('chatid');
+        var s = req.socket.id;
+
+        var m = await Message.create({name: n, text: t, socket: s}).fetch();
+
+        await Chat.addToCollection(c, 'messages').members([m.id]);
     },
 
     //serve embed page at /chat/embed/:projectid/:name
@@ -75,6 +89,18 @@ module.exports = {
                 sails.sockets.join(sails.waitingrooms[p].shift(), c.id);
             }
             sails.sockets.broadcast(c.id, 'converse', {chatid: c.id, socket: s});
+            //insert server messages
+
+
+
+
+
+            // var m = await Message.create({name: 'SERVER', text: 'test', socket: 'SERVER'}).fetch();
+            // //change createdat here
+            // await Chat.addToCollection(c, 'messages').members([m.id]);
+
+
+
         }
 
     },

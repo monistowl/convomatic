@@ -42,6 +42,8 @@ module.exports.routes = {
   'GET /chat/embed/:projectid/:name': 'ChatController.embed',
 
   'GET /chat/transmit' : 'ChatController.transmit',
+  
+  'GET /chat/logservermsg' : 'ChatController.logservermsg',
 
   'GET /chat/arrive' : 'ChatController.arrive',
 

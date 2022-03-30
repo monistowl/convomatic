@@ -5,7 +5,7 @@ $(function()
     // Display an incoming message
     renderMessage = function(name, text, source, imageURL) {
 
-      console.log(imageURL);
+      //console.log(imageURL);
 
       // Get the chat transcript container.
       var chatTranscriptEl = $('#chat-transcript');
@@ -13,7 +13,10 @@ $(function()
       // Declare a var to hold the new line in the transcript.
       var chatLineEl;
 
+      var t = text;
+
       if(source == 'system') {
+          //io.socket.get('/chat/logservermsg', {name: 'CONVOMATIC', text: t, chatid: mychat });
           //Style as admin chat line with optional image
           if(imageURL) {
               chatLineEl = $('<li class="chat-line list-group-item-danger list-group-item row"><div class="col col-2 px-0 font-weight-bold">' + name + '</div><div class="col col-10 px-0 font-weight-bold"><img class="img-fluid rounded float-center" style="max-height:400px" src="' + imageURL+ '"></img>' + text + '</div></li>');
@@ -52,17 +55,21 @@ $(function()
         var t = 3000; //delay between welcome and prompts
 
         renderMessage('SYSTEM', SAILS_LOCALS.project.welcome, 'system');
+        //io.socket.get('/chat/logservermsg',{});
+
         //enable controls here
 
         for (let i=0; i<SAILS_LOCALS.project.prompts.length; i++) {
             setTimeout(function() {
                 renderMessage('SYSTEM', SAILS_LOCALS.project.prompts[i].text, 'system', SAILS_LOCALS.project.prompts[i].url);
+                //io.socket.get('/chat/logservermsg',{});
             }, t);
             t += SAILS_LOCALS.project.prompts[i].delay * 1000;
         }
 
         setTimeout(function() {
             renderMessage('SYSTEM', SAILS_LOCALS.project.farewell, 'system');
+            //io.socket.get('/chat/logservermsg',{});
             //disable controls here
         }, t);
 

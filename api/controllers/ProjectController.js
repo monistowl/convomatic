@@ -166,13 +166,14 @@ module.exports = {
         var chats = await Chat.find({project: id}).populate('messages');
 
         var s = ""
-        s += 'TIME,CHAT,SOCKET,NAME,MESSAGE\n'
+        s += 'DATE,TIME,CHAT,SOCKET,NAME,MESSAGE\n'
         chats.forEach(function(chat) {
             chat.messages.forEach(function(message) {
-                s += message.createdAt + ',' + chat.id + ',' + message.socket + ',' + message.name + ',' + message.text + '\n';
+                var friendlydate = new Date(message.createdAt);
+
+                s += friendlydate.getUTCDate() +'/' + friendlydate.getUTCDay() + '/' + friendlydate.getUTCFullYear() + ',' + friendlydate.getUTCHours() + ':' + friendlydate.getUTCMinutes() + ':' + friendlydate.getUTCSeconds() + ',' + chat.id + ',' + message.socket + ',' + message.name + ',' + message.text + '\n';
             });
         });
-
         res.set('Content-Type', 'text/csv');
         res.setHeader('Content-disposition', 'attachment; filename=chats.csv');
         res.status(200).send(s);
