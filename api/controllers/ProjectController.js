@@ -171,7 +171,7 @@ module.exports = {
             chat.messages.forEach(function(message) {
                 var friendlydate = new Date(message.createdAt);
 
-                s += friendlydate.getUTCDate() +'/' + friendlydate.getUTCDay() + '/' + friendlydate.getUTCFullYear() + ',' + friendlydate.getUTCHours() + ':' + friendlydate.getUTCMinutes() + ':' + friendlydate.getUTCSeconds() + ',' + chat.id + ',' + message.socket + ',' + message.name + ',' + message.text + '\n';
+                s += friendlydate.getUTCDate() +'/' + friendlydate.getUTCDay() + '/' + friendlydate.getUTCFullYear() + ',' + friendlydate.getUTCHours() + ':' + friendlydate.getUTCMinutes() + ':' + friendlydate.getUTCSeconds() + ',' + chat.id + ',' + message.socket + ',' + message.name + ',"' + message.text + '"\n';
             });
         });
         res.set('Content-Type', 'text/csv');
