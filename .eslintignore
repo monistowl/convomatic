@@ -1,3 +1,5 @@
-assets/dependencies/**/*.js
-views/**/*.ejs
-
+dist/
+build/
+node_modules/
+apps/**/.svelte-kit
+apps/**/build
