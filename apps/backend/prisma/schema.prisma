@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id           String        @id @default(uuid())
+  name         String
+  quorum       Int
+  welcomeCopy  String
+  farewellCopy String
+  status       ProjectStatus @default(DRAFT)
+  prompts      Prompt[]
+  sessions     ChatSession[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Prompt {
+  id         String   @id @default(uuid())
+  order      Int
+  body       String
+  delaySeconds Int
+  assetUrl   String?
+  assetType  PromptAssetType @default(NONE)
+  projectId  String
+  project    Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model ChatSession {
+  id            String               @id @default(uuid())
+  state         SessionState         @default(WAITING)
+  projectId     String
+  project       Project              @relation(fields: [projectId], references: [id])
+  participants  SessionParticipant[]
+  messages      Message[]
+  promptEvents  PromptEvent[]
+  startedAt     DateTime?            
+  endedAt       DateTime?
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+}
+
+model Participant {
+  id            String               @id @default(uuid())
+  externalId    String
+  attributes    Json
+  sessionLinks  SessionParticipant[]
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+}
+
+model SessionParticipant {
+  id             String      @id @default(uuid())
+  sessionId      String
+  participantId  String
+  role           String      @default("participant")
+  joinedAt       DateTime    @default(now())
+  leftAt         DateTime?
+  session        ChatSession @relation(fields: [sessionId], references: [id])
+  participant    Participant @relation(fields: [participantId], references: [id])
+}
+
+model Message {
+  id          String        @id @default(uuid())
+  sessionId   String
+  senderType  SenderType
+  senderId    String?
+  payload     Json
+  deliveredAt DateTime      @default(now())
+  session     ChatSession   @relation(fields: [sessionId], references: [id])
+}
+
+model PromptEvent {
+  id         String      @id @default(uuid())
+  sessionId  String
+  promptId   String
+  emittedAt  DateTime    @default(now())
+  session    ChatSession @relation(fields: [sessionId], references: [id])
+  prompt     Prompt      @relation(fields: [promptId], references: [id])
+}
+
+enum ProjectStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+enum PromptAssetType {
+  NONE
+  IMAGE
+  AUDIO
+  VIDEO
+}
+
+enum SessionState {
+  WAITING
+  ACTIVE
+  CLOSED
+}
+
+enum SenderType {
+  PARTICIPANT
+  SYSTEM
+}
