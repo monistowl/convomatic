@@ -80,27 +80,27 @@ Adopt a modular, services-light architecture with a single deployable backend (F
 4. Archive the Sails repository and document how to recover transcripts from legacy storage if needed.
 
 ## Roadmap & Milestones
-1. **Discovery & Foundations (2 weeks)**
-   - Finalize requirements with research stakeholders and catalog legacy data needs.
+1. **Discovery & Foundations**
+   - Capture research requirements and catalog legacy data needs.
    - Scaffold Fastify + Prisma backend, set up CI/CD, and configure PostgreSQL/Redis infrastructure.
    - Implement base data models and migrations.
 
-2. **Real-Time Core (3 weeks)**
+2. **Real-Time Core**
    - Build Redis-backed matchmaking service and WebSocket gateway.
    - Implement message persistence, prompt scheduling pipeline, and CSV export endpoints.
    - Write automated load tests simulating MTurk traffic.
 
-3. **Participant Embed (2 weeks)**
+3. **Participant Embed**
    - Develop SvelteKit widget with responsive UI, accessibility, and reconnection handling.
    - Integrate prompt playback timeline and system messaging parity with legacy behavior.【F:views/chat/embed.ejs†L95-L141】
    - Ship instrumentation for latency/error tracking (Sentry, LogRocket optional).
 
-4. **Admin Dashboard (3 weeks)**
+4. **Admin Dashboard**
    - Implement project CRUD forms, prompt editors, and live session monitor inspired by current dashboard workflows.【F:views/project/show.ejs†L20-L67】【F:api/controllers/ProjectController.js†L34-L133】
    - Add authentication + RBAC, CSV export triggers, and Qualtrics snippet generation.
    - Provide automated regression tests (Playwright) for key flows.
 
-5. **Integration & Cutover (2 weeks)**
+5. **Integration & Cutover**
    - Wire Qualtrics/MTurk hooks, migrate existing projects, and document embedding instructions.
    - Run parallel pilot, monitor metrics, and execute final switchover with rollback plan.
 
